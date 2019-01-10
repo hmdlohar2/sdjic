@@ -34,13 +34,13 @@
 							<!--LOGIN FORM-->
 							<div>
   
-							  <form class="modal-content animate contact_form_container" style="border:0px solid green;width:50%;" action="#">
+							  <form class="modal-content animate contact_form_container" style="border:0px solid green;width:50%;" action="dataModel.php" method="POST">
 								<!--INPUT FIELDS-->
 									<h1 class="home_title">LOGIN</h1>
 								<div class="container">
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
 										<i class="fa fa-user faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="text" placeholder="Username" style="float:left;width:10%;" name="uname" required>
+										<input type="text" placeholder="Username" style="float:left;width:10%;" name="username" required>
 									</div>
 									<br />
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
@@ -48,7 +48,7 @@
 										<input type="password" placeholder="Password" style="float:left;width:20%;" name="psw" required>
 									</div>
 									
-								  <input type="submit" id="form_submit_button" class="form_submit_button button trans_200" style="background-color: #31124b;letter-spacing:15px;" value="Login.."/>
+								  <input type="submit" id="form_submit_button" class="form_submit_button button trans_200" style="background-color: #31124b;letter-spacing:15px;" name="login" value="Login.."/>
 								  <hr />
 								  <label>
 									<input type="checkbox" checked="checked" name="remember"> Remember me
