@@ -1,0 +1,56 @@
+.header-logo{
+	height:60px;
+}
+.file-upload-div{
+	height:200px;
+	background: rgba(100,100,100,0.2);
+	text-align: center;
+	border-radius: 5px;
+}
+#uploadBtn{
+
+}
+.main-area{
+	min-height: 85%;
+	margin-top:20px;
+}
+
+.hot-it-works{
+
+}
+.step-holder{
+	text-align: center;
+}
+.step-holder .step{
+	display: inline-block;
+	text-align: center;
+	margin-left:20px;
+	margin-right:20px;
+}
+.step-holder .step img{
+	height:200px;
+	width:200px;
+	border-radius: 50%;
+}
+.step-holder .step h4{
+	margin-top:10px;
+}
+.footer-right{
+	float:right;
+}
+.error{
+	color:red;
+}
+
+#loading{
+	position: fixed;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background:rgba(50,50,50,0.3);
+	z-index: 100;
+	text-align: center;
+	padding:20%;
+	display: none;
+}
