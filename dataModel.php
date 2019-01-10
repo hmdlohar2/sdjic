@@ -3,7 +3,7 @@ include "common.php";
 
 
 //Register User -----------------------------------------------------
-if(isset($_POST['register'])){
+if(isset($_GET['register'])){
 	$name=filter_data($_POST['name']);
 	$username=filter_data($_POST['username']);
 	$email=filter_data($_POST['email']);
@@ -13,8 +13,15 @@ if(isset($_POST['register'])){
 		return;
 	}
 	$passwd=md5($password);
+	$userExist = sql_query("select count(id) as count from users where username='{$username}'");
+	if($userExist[0]['count'] >=1){
+		echo "userExist";
+		return;
+	}
+	//echo "insert into users (name,username,email,password) values ('{$name}','{$username}','{$email}','{$passwd}')";
 	$res=sql_nonquery("insert into users (name,username,email,password) values ('{$name}','{$username}','{$email}','{$passwd}')");
 	if($res==1){
+		header("Location: login.php");
 		echo "success";
 	}
 	else{

@@ -14,7 +14,7 @@ require "header.php";
 
           <div class="table-responsive">
             <div class="table table-responsive">
-            <table class="table table-striped">
+            <table id="mainTable" class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
@@ -27,14 +27,15 @@ require "header.php";
 
               <tbody>
               	<?php 
-              	$allCliparts=sql_query("select * from events");
+              	$allCliparts=sql_query("select * from events ");
               	
               	
               	foreach ($allCliparts as $key => $value) {
               		echo "<tr>
-		                  <td>{$value['id']}</td>
 		                  <td>{$value['name']}</td>
-		                  <td>{$value['email']}</td>
+		                  <td>{$value['description']}</td>
+                      <td>{$value['start_date']}</td>
+		                  <td>{$value['end_date']}</td>
 		                  
 		                  
 		                  <td>";
@@ -42,7 +43,7 @@ require "header.php";
 									                 
 		                  <?php
 		                  echo "
-		                  	<a class='btn btn-info' href='user_update.php?user_id={$value['id']}'> Update</a>
+		                  	<a class='btn btn-info' href='user_update.php?event_id={$value['id']}'> Update</a>
 		                  	<a class='btn btn-danger' href='#' onclick='deleteUser({$value['id']},this)'> Delete</a>
 		                  </td>
 		                  	
@@ -62,12 +63,15 @@ require "header.php";
 require "footer.php";
 ?>
 <script type="text/javascript">
+  $(document).ready(function() {
+    $('#mainTable ').DataTable();
+} );
 function deleteUser(user_id,e){
-	if(!confirm("Do You really want to delete user?")){
+	if(!confirm("Do You really want to delete event?")){
 		return;
 	}
 	$.ajax({
-        url: "adminModel.php?user_delete=1",
+        url: "adminModel.php?event_delete=1",
         type: "POST",
         data: {
         	id: user_id
@@ -75,13 +79,13 @@ function deleteUser(user_id,e){
         success:function(data){
             console.log(data);
            	if(data=="success"){
-				notie.alert({text: "User Deleted",type:1});
+				notie.alert({text: "Event Deleted",type:1});
 				
 				$(e).parents("tr").remove()
 			}
 			else{
 				
-					notie.alert({text: "Problem deleting user",type:3});
+					notie.alert({text: "Problem deleting event",type:3});
 				
 			}
         },

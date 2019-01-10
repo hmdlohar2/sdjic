@@ -7,7 +7,7 @@ require "header.php";
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 		<form action="adminModel.php" method="POST" id="alumni_add" enctype="multipart/form-data">
 			<table class="table">
-					<td><input type="hidden" class="form-control" name="type"></td>
+					<td><input type="hidden" class="form-control" name="type" value='event'></td>
 				<tr>
 					<td>Event Name: </td>
 					<td><input type="text" class="form-control" name="name"></td>
@@ -25,7 +25,7 @@ require "header.php";
 				<tr>
 					<td>End Date: </td>
 					<td>
-						<input type="email" class="form-control" name="end_date">
+						<input type="date" class="form-control" name="end_date">
 					</td>
 				</tr>
 				

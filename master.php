@@ -27,19 +27,19 @@
 							style="width:auto;">register</a></div>
 							<div id="id02" class="modal">
   
-							  <form class="modal-content animate contact_form_container" style="height:95%;" action="/action_page.php">
+							  <form class="modal-content animate contact_form_container" style="height:95%;" action="dataModel.php?register=1" method="POST">
 								<!--INPUT FIELDS-->
 								<div class="contact_title text-center" style="letter-spacing:5px;">Signup &nbsp;Now</div>
 								<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
 								<div class="container">
 									<div style="border:1px solid #fff;height:50px;background:#fff;padding:1px;">
 										<i class="fa fa-user faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="text" placeholder="Enter First Name" style="float:left;width:95%;" name="fname" required>
+										<input type="text" placeholder="Enter Name" style="float:left;width:95%;" name="name" required>
 									</div>
 									<br />
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
 										<i class="fa fa-user faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="text" placeholder="Enter Last Name" style="float:left;width:95%;" name="lname" required>
+										<input type="text" placeholder="Enter username" style="float:left;width:95%;" name="username" required>
 									</div>
 									<br />
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
@@ -49,18 +49,15 @@
 									<br />
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
 										<i class="fa fa-lock faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="password" placeholder="Enter Password" style="float:left;width:95%;" name="pswd" required>
+										<input type="password" placeholder="Enter Password" style="float:left;width:95%;" name="password" required>
 									</div>
 									<br />
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
 										<i class="fa fa-lock faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="password" placeholder="Confirm Password" style="float:left;width:9%;" name="cpswd" required>
+										<input type="password" placeholder="Confirm Password" style="float:left;width:9%;" name="repassword" required>
 									</div>
 									<br />
-									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
-										<i class="fa fa-phone faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="text" placeholder="Enter Phone" style="float:left;width:95%;" name="phone" required>
-									</div>
+									
 									<br />
 									
 									<input type="submit" id="form_submit_button" class="form_submit_button button trans_200" style="background-color: #31124b;letter-spacing:15px;" value="Signup.." />

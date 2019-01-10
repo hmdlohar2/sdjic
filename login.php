@@ -45,14 +45,14 @@
 									<br />
 									<div style="border:1px solid white;height:50px;background:#fff;padding:1px;">
 										<i class="fa fa-lock faas" aria-hidden="true" style="font-size:30px;"></i>
-										<input type="password" placeholder="Password" style="float:left;width:20%;" name="psw" required>
+										<input type="password" placeholder="Password" style="float:left;width:20%;" name="password" required>
 									</div>
 									
 								  <input type="submit" id="form_submit_button" class="form_submit_button button trans_200" style="background-color: #31124b;letter-spacing:15px;" name="login" value="Login.."/>
 								  <hr />
-								  <label>
+								  <!-- <label>
 									<input type="checkbox" checked="checked" name="remember"> Remember me
-								  </label>
+								  </label> -->
 								</div>
 								<!-- CANCEL - FORGOT -->
 								<div class="container" >

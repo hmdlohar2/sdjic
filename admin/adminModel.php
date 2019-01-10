@@ -62,14 +62,15 @@ if(isset($_GET['user_delete'])){
 	}
 }
 if(isset($_GET['event_add'])){
+	
 	$type=filter_data($_POST['type']);
 	$start_date=filter_data($_POST['start_date']);
 	$end_date=filter_data($_POST['end_date']);
 	$name=filter_data($_POST['name']);
 	$description=filter_data($_POST['description']);
 		
-	if(empty($name) || empty($username) ||empty($email)||empty($password)){
-		echo "missingDparticipent_countata";
+	if(empty($start_date) || empty($end_date) ||empty($name)||empty($type)){
+		echo "missingData";
 		return;
 	}
 	$query  ="insert into events (type,start_date,end_date,name,description
