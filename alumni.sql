@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 10, 2019 at 08:04 AM
+-- Generation Time: Jan 10, 2019 at 10:34 AM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.0.20
 
@@ -76,6 +76,16 @@ CREATE TABLE `events` (
   `participent_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `type`, `start_date`, `end_date`, `name`, `description`, `participent_count`) VALUES
+(1, 'event', '2019-01-11', '0000-00-00', 'inferno', 'inferno is big', 0),
+(2, 'event', '2019-01-11', '0000-00-00', 'inferno', 'inferno is big', 0),
+(3, 'event', '2019-01-11', '2019-01-16', 'inferno', 'inferno is big', 0),
+(4, 'event', '2019-01-17', '2019-01-17', 'eventadd', 'asdflhsadf', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +125,16 @@ CREATE TABLE `users` (
   `status` int(11) NOT NULL DEFAULT '1',
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `user_role`, `email`, `status`, `name`) VALUES
+(4, 'hmdlohar', '20557818a590a772d01b434ff3346be5', 'alumni', 'hmdlohar@gmail.com', 1, 'hmd'),
+(5, 'santosh555', 'f5bb0c8de146c67b44babbf4e6584cc0', 'alumni', 'santhosh555@gmail.com', 1, 'santhosh'),
+(6, 'system_admin', '20557818a590a772d01b434ff3346be5', 'admin', 'system_admin@gmail.com', 1, 'Admin'),
+(10, 'hmdlohar2', '20557818a590a772d01b434ff3346be5', 'user', 'hmdlohar2@gmail.com', 1, 'hamid lohar');
 
 -- --------------------------------------------------------
 
@@ -212,15 +232,17 @@ ALTER TABLE `cources`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-  
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `event_comments`
 --
 ALTER TABLE `event_comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
@@ -229,8 +251,7 @@ ALTER TABLE `event_comments`
 -- Constraints for table `alumnis`
 --
 ALTER TABLE `alumnis`
-  ADD CONSTRAINT `alumnis_ibfk_1` FOREIGN KEY (`batch_id`) REFERENCES `batches` (`id`),
-  ADD CONSTRAINT `alumnis_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `alumnis_ibfk_1` FOREIGN KEY (`batch_id`) REFERENCES `batches` (`id`);
 
 --
 -- Constraints for table `batches`
@@ -242,21 +263,13 @@ ALTER TABLE `batches`
 -- Constraints for table `event_comments`
 --
 ALTER TABLE `event_comments`
-  ADD CONSTRAINT `event_comments_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
-  ADD CONSTRAINT `event_comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `event_comments_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
 
 --
 -- Constraints for table `event_vouls`
 --
 ALTER TABLE `event_vouls`
-  ADD CONSTRAINT `event_vouls_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
-  ADD CONSTRAINT `event_vouls_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `user_profile`
---
-ALTER TABLE `user_profile`
-  ADD CONSTRAINT `user_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `event_vouls_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
