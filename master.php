@@ -99,7 +99,7 @@
 								<li class="main_nav_item"><a href="index.php">home</a></li>
 								<li class="main_nav_item"><a href="about.php">about us</a></li>
 								<li class="main_nav_item"><a href="events.php">events</a></li>
-								<li class="main_nav_item"><a href="blog.php">activites</a></li>
+								<li class="main_nav_item"><a href="activities.php">activites</a></li>
 								<li class="main_nav_item"><a href="contact.php">contact</a></li>
 							</ul>
 						</div>

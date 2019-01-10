@@ -36,11 +36,14 @@ else if(isset($_POST['login'])){
 
 		if($rs[0]['password']==$passwd){
 			$_SESSION['userLogged']=$rs[0]['id'];
-			echo "success";
+			echo "You are Logged In You will be redirected to dashboard ";
+			echo "<script>setTimeout(function(){window.location.assign('dashboard.php')},1000)</script>";
 
 		}
 		else{
-			echo "passwordDoNotMatch";
+
+			echo "Wrong Password";
+			echo "<a href='login.php'>Go Back </a> ";
 		}
 	}
 }
