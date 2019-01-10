@@ -55,8 +55,7 @@
 									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">professioanl</div>
 									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">my batch</div>
 
-									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/departure.png" alt="">flights</div>
-									<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/island.png" alt="">trips</div>
+									
 									
 								</div>		
 							</div>
