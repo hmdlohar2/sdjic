@@ -9,7 +9,7 @@ require "header.php";
 
           <h2>Alumnies
 			
-          <a class="btn btn-sm btn-primary float-right " href="add_alumni.php">Add Alumni</a>
+          <a class="btn btn-primary float-right " href="user_add.php">Add Alumni</a>
           </h2>
 
           <div class="table-responsive">
@@ -27,7 +27,7 @@ require "header.php";
 
               <tbody>
               	<?php 
-              	$allCliparts=sql_query("select id,name,email from users");
+              	$allCliparts=sql_query("select id,name,email from users where user_role='alumni'");
               	
               	
               	foreach ($allCliparts as $key => $value) {
@@ -39,9 +39,13 @@ require "header.php";
 		                  
 		                  <td>";
 		                  ?>
-		                 
+									                 
 		                  <?php
-		                  echo "</td>
+		                  echo "
+		                  	<a class='btn btn-info' href='user_update.php?user_id={$value['id']}'> Update</a>
+		                  	<a class='btn btn-danger' href='#' onclick='deleteUser({$value['id']},this)'> Delete</a>
+		                  </td>
+		                  	
 		                </tr>";
               	}
               ?>
@@ -57,3 +61,35 @@ require "header.php";
 <?php 
 require "footer.php";
 ?>
+<script type="text/javascript">
+function deleteUser(user_id,e){
+	if(!confirm("Do You really want to delete user?")){
+		return;
+	}
+	$.ajax({
+        url: "adminModel.php?user_delete=1",
+        type: "POST",
+        data: {
+        	id: user_id
+        },
+        success:function(data){
+            console.log(data);
+           	if(data=="success"){
+				notie.alert({text: "User Deleted",type:1});
+				
+				$(e).parents("tr").remove()
+			}
+			else{
+				
+					notie.alert({text: "Problem deleting user",type:3});
+				
+			}
+        },
+        error:function(err){
+        	notie.alert({ text: "Unexpected error", type: 3 });
+            console.log(err.responseText);
+        }
+    });
+}
+
+</script>

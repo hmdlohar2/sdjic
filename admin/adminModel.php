@@ -1,9 +1,9 @@
 <?php 
 include "../common.php";
 
-
+//print_r($_POST);
 //Register User -----------------------------------------------------
-if(isset($_POST['users_add'])){
+if(isset($_GET['users_add'])){
 	$name=filter_data($_POST['name']);
 	$username=filter_data($_POST['username']);
 	$email=filter_data($_POST['email']);
@@ -14,15 +14,108 @@ if(isset($_POST['users_add'])){
 		return;
 	}
 	$passwd=md5($password);
-	$res=sql_nonquery("insert into users (name,username,email,password,user_role) values ('{$name}','{$username}','{$email}','{$passwd}','{$user_role}')");
+	$userExist = sql_query("select count(id) as count from users where username='{$username}'");
+	if($userExist[0]['count'] >=1){
+		echo "userExist";
+		return;
+	}
+	$query  ="insert into users (name,username,email,password,user_role) values ('{$name}','{$username}','{$email}','{$passwd}','{$user_role}')";
+
+	$res=sql_nonquery($query);
 	if($res==1){
 		echo "success";
 	}
 	else{
-		echo "problemInserting";
+		echo "problemInserting:";
 	}
 }
 
+
+if(isset($_GET['user_update'])){
+$name=filter_data($_POST['name']);
+	$id=filter_data($_POST['id']);
+	$username=filter_data($_POST['username']);
+	$email=filter_data($_POST['email']);
+	if(empty($name) || empty($username) ||empty($email)){
+		echo "missingData";
+		return;
+	}
+
+	$query  ="update users set name='{$name}', username='{$username}',email='{$email}' where id={$id}";
+	$res=sql_nonquery($query);
+	if($res==1){
+		echo "success";
+	}
+	else{
+		echo "problemUpdating:". $res;
+	}
+}
+if(isset($_GET['user_delete'])){
+	$id=filter_data($_POST['id']);
+	$query ="delete from users where id={$id}";
+	$res=sql_nonquery($query);
+	if($res==1){
+		echo "success";
+	}
+	else{
+		echo "problemDeleting:" .$res;
+	}
+}
+if(isset($_GET['event_add'])){
+	$type=filter_data($_POST['type']);
+	$start_date=filter_data($_POST['start_date']);
+	$end_date=filter_data($_POST['end_date']);
+	$name=filter_data($_POST['name']);
+	$description=filter_data($_POST['description']);
+		
+	if(empty($name) || empty($username) ||empty($email)||empty($password)){
+		echo "missingDparticipent_countata";
+		return;
+	}
+	$query  ="insert into events (type,start_date,end_date,name,description
+) values ('{$type}','{$start_date}','{$end_date}','{$name}','{$description}')";
+
+	$res=sql_nonquery($query);
+	if($res==1){
+		echo "success";
+	}
+	else{
+		echo "problemInserting:";
+	}
+}
+
+
+if(isset($_GET['event_update'])){
+$name=filter_data($_POST['name']);
+	$id=filter_data($_POST['id']);
+	$username=filter_data($_POST['username']);
+	$email=filter_data($_POST['email']);
+	if(empty($name) || empty($username) ||empty($email)){
+		echo "missingData";
+		return;
+	}
+
+	$query  ="update events set type='{$type}', start_date='{$start_date}',end_date='{$end_date}',name='{$name}',description='{$description}' where id={$id}";
+	$res=sql_nonquery($query);
+	if($res==1){
+		echo "success";
+	}
+	else{
+		echo "problemUpdating:". $res;
+	}
+}
+
+if(isset($_GET['event_delete'])){
+	$id=filter_data($_POST['id']);
+	$query ="delete from events where id={$id}";
+	$res=sql_nonquery($query);
+	if($res==1){
+		echo "success";
+	}
+	else{
+		echo "problemDeleting:" .$res;
+	}
+}
 //Login Authentication -----------------------------------------------------
 else if(isset($_POST['login'])){
 	

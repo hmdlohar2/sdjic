@@ -17,6 +17,8 @@ require_once "admin_logged.php";
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="plugins/notie/notie.min.css" media="screen">
+    <script type="text/javascript" src="plugins/notie/notie.min.js"></script>
   </head>
 
   <body>
